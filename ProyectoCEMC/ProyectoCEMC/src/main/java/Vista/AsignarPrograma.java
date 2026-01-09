@@ -3,6 +3,7 @@ package Vista;
 import Modelo.Asigna_ejecuta;
 import Modelo.Pacientes;
 import Modelo.Programa;
+import Modelo.Usuario;
 import java.awt.Color;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -11,15 +12,16 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class AsignarPrograma extends javax.swing.JFrame {
+    private Usuario usuario;
     private ArrayList<Integer> pacienteIds = new ArrayList<>();
     private ArrayList<Integer> programaIds = new ArrayList<>();
     private int idEntrenador;
-    
+
     Color azul = new Color(41, 51, 92);
     Color hover = new Color(49, 69, 168);
 
-    public AsignarPrograma(int idEntrenador) {
-        this.idEntrenador = idEntrenador;
+    public AsignarPrograma(Usuario usuario) {
+        this.usuario = usuario;
         initComponents();
         cargarPacientes();
         cargarProgramas();
@@ -49,7 +51,7 @@ public class AsignarPrograma extends javax.swing.JFrame {
     private void cargarPacientes() {
         Pacientes modeloPacientes = new Pacientes();
         try {
-            ResultSet rs = modeloPacientes.MostrarPorEntrenador(this.idEntrenador);
+            ResultSet rs = modeloPacientes.MostrarPorEntrenador(this.usuario.getIdusuario());
             Cmb_Pacientes.removeAllItems();
             pacienteIds.clear();
 
@@ -101,12 +103,11 @@ public class AsignarPrograma extends javax.swing.JFrame {
             int idPaciente = pacienteIds.get(indexPaciente);
             int idPrograma = programaIds.get(indexPrograma);
 
-            String fechaInicioStr = Txt_FechaInicio.getText(); 
+            String fechaInicioStr = Txt_FechaInicio.getText();
             String fechaFinStr = Txt_FechaFin.getText();
             String observaciones = Txt_Observaciones.getText();
             String estatus = Txt_Estatus.getText();
 
-            
             Date fechaInicio = Date
                     .valueOf(fechaInicioStr.equals("Fecha Inicio (YYYY-MM-DD)") ? java.time.LocalDate.now().toString()
                             : fechaInicioStr);
@@ -117,13 +118,12 @@ public class AsignarPrograma extends javax.swing.JFrame {
             Asigna_ejecuta asignacion = new Asigna_ejecuta();
             asignacion.setPacientes_usuario_idusuario(idPaciente);
             asignacion.setProgramas_cognitivos_idprogramas_cognitivos(idPrograma);
-            asignacion.setEntrenadores_usuario_idusuario(this.idEntrenador);
+            asignacion.setEntrenadores_usuario_idusuario(this.usuario.getIdusuario());
             asignacion.setFecha_inicio(fechaInicio);
             asignacion.setFecha_fin(fechaFin);
             asignacion.setObservaciones(observaciones.equals("Observaciones") ? "" : observaciones);
             asignacion.setEstatus(estatus.equals("Estatus (Activo/Pendiente)") ? "Asignado" : estatus);
 
-            
             asignacion.setFecha_pago(Date.valueOf(java.time.LocalDate.now()));
             asignacion.setMonto_pago(0.0);
             asignacion.setMetodo_pago("Pendiente");
@@ -138,9 +138,10 @@ public class AsignarPrograma extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error al asignar (Verifique fechas YYYY-MM-DD): " + ex.getMessage());
         }
     }
-    
+
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
@@ -269,6 +270,7 @@ public class AsignarPrograma extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 Btn_AsignarMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 Btn_AsignarMouseExited(evt);
             }
@@ -284,17 +286,17 @@ public class AsignarPrograma extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(Lbl_Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(Lbl_Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 500,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)));
         jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Lbl_Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(Lbl_Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 42,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)));
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 500, 40));
 
@@ -304,29 +306,29 @@ public class AsignarPrograma extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Btn_AsignarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_AsignarMouseEntered
+    private void Btn_AsignarMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_Btn_AsignarMouseEntered
         Btn_Asignar.setBackground(hover);
-    }//GEN-LAST:event_Btn_AsignarMouseEntered
+    }// GEN-LAST:event_Btn_AsignarMouseEntered
 
-    private void Btn_AsignarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_AsignarMouseExited
+    private void Btn_AsignarMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_Btn_AsignarMouseExited
         Btn_Asignar.setBackground(azul);
-    }//GEN-LAST:event_Btn_AsignarMouseExited
+    }// GEN-LAST:event_Btn_AsignarMouseExited
 
-    private void Txt_FechaInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_FechaInicioMouseClicked
+    private void Txt_FechaInicioMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_Txt_FechaInicioMouseClicked
         Txt_FechaInicio.setText("");
-    }//GEN-LAST:event_Txt_FechaInicioMouseClicked
+    }// GEN-LAST:event_Txt_FechaInicioMouseClicked
 
-    private void Txt_FechaFinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_FechaFinMouseClicked
+    private void Txt_FechaFinMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_Txt_FechaFinMouseClicked
         Txt_FechaFin.setText("");
-    }//GEN-LAST:event_Txt_FechaFinMouseClicked
+    }// GEN-LAST:event_Txt_FechaFinMouseClicked
 
-    private void Txt_EstatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_EstatusMouseClicked
+    private void Txt_EstatusMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_Txt_EstatusMouseClicked
         Txt_Estatus.setText("");
-    }//GEN-LAST:event_Txt_EstatusMouseClicked
+    }// GEN-LAST:event_Txt_EstatusMouseClicked
 
-    private void Txt_ObservacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_ObservacionesMouseClicked
+    private void Txt_ObservacionesMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_Txt_ObservacionesMouseClicked
         Txt_Observaciones.setText("");
-    }//GEN-LAST:event_Txt_ObservacionesMouseClicked
+    }// GEN-LAST:event_Txt_ObservacionesMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Asignar;
