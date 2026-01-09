@@ -11,11 +11,6 @@ public class Entrenadores extends Usuario {
     //Constructores
     public Entrenadores() {}
 
-    public Entrenadores(String especialidad, int usuario_idusuario) {
-        this.especialidad = especialidad;
-        this.usuario_idusuario = usuario_idusuario;
-    }
-
     //Getters y Setters
     public String getEspecialidad() {
         return especialidad;
@@ -33,7 +28,7 @@ public class Entrenadores extends Usuario {
         this.usuario_idusuario = usuario_idusuario;
     }
     
-    public int Guardar() throws SQLException {
+    public void Guardar_entrenador() throws SQLException {
         Connection CON = DriverManager.getConnection("jdbc:mysql://localhost:3306/centro_mental","root","");
         PreparedStatement Sen = CON.prepareStatement("INSERT INTO entrenadores VALUES (?, ?)");
         
@@ -42,7 +37,7 @@ public class Entrenadores extends Usuario {
         
         Sen.executeUpdate();
         
-        return idusuario;
+        
     }
     
     public boolean Buscar() throws SQLException {
