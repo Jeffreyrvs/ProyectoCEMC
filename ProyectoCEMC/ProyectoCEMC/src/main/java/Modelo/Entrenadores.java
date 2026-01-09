@@ -36,6 +36,8 @@ public class Entrenadores extends Usuario {
         Sen.setInt(2, usuario_idusuario);
         
         Sen.executeUpdate();
+        
+        
     }
     
     public boolean Buscar() throws SQLException {
