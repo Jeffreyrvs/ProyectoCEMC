@@ -28,11 +28,7 @@ public class ActEntrenador extends javax.swing.JFrame {
     }
     public ActEntrenador(Usuario usuario, int idAmodificar) {
         this.usuario=usuario;
-        this.usuario = usuario;
         initComponents();
-        Btn_Buscar.setFocusPainted(false);
-        Btn_Buscar.setBorderPainted(false);
-        Btn_Buscar.setOpaque(true);
         Btn_Actualizar.setFocusPainted(false);
         Btn_Actualizar.setBorderPainted(false);
         Btn_Actualizar.setOpaque(true);
@@ -80,7 +76,6 @@ public class ActEntrenador extends javax.swing.JFrame {
         Txt_PregRecuperacion = new javax.swing.JTextField();
         Txt_RespRecuperacion = new javax.swing.JTextField();
         Btn_Actualizar = new javax.swing.JButton();
-        Btn_Buscar = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         Txt_Especialidad = new javax.swing.JTextField();
@@ -397,23 +392,6 @@ public class ActEntrenador extends javax.swing.JFrame {
         Btn_Actualizar.addActionListener(this::Btn_ActualizarActionPerformed);
         jPanel2.add(Btn_Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, 110, 30));
 
-        Btn_Buscar.setBackground(new java.awt.Color(41, 51, 92));
-        Btn_Buscar.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
-        Btn_Buscar.setForeground(new java.awt.Color(250, 250, 250));
-        Btn_Buscar.setText("BUSCAR");
-        Btn_Buscar.setBorder(null);
-        Btn_Buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Btn_Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Btn_BuscarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Btn_BuscarMouseExited(evt);
-            }
-        });
-        Btn_Buscar.addActionListener(this::Btn_BuscarActionPerformed);
-        jPanel2.add(Btn_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 110, 30));
-
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(156, 156, 156)));
 
         jLabel6.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
@@ -539,20 +517,8 @@ public class ActEntrenador extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_ActualizarMouseExited
 
     private void Btn_ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ActualizarActionPerformed
-
+        
     }//GEN-LAST:event_Btn_ActualizarActionPerformed
-
-    private void Btn_BuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_BuscarMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Btn_BuscarMouseEntered
-
-    private void Btn_BuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_BuscarMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Btn_BuscarMouseExited
-
-    private void Btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_BuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Btn_BuscarActionPerformed
 
     private void Txt_EspecialidadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_EspecialidadMousePressed
         // TODO add your handling code here:
@@ -563,7 +529,6 @@ public class ActEntrenador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Actualizar;
-    private javax.swing.JButton Btn_Buscar;
     private javax.swing.JLabel Lbl_Volver;
     private javax.swing.JTextField Txt_ApeMaterno;
     private javax.swing.JTextField Txt_ApePaterno;
