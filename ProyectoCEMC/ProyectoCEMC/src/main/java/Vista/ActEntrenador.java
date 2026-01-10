@@ -23,11 +23,15 @@ public class ActEntrenador extends javax.swing.JFrame {
      * Creates new form ActEntrenador
      */
     public ActEntrenador(Usuario usuario) {
+<<<<<<< HEAD
         this.usuario=usuario;
         initComponents();
     }
     public ActEntrenador(Usuario usuario, int idAmodificar) {
         this.usuario=usuario;
+=======
+        this.usuario = usuario;
+>>>>>>> e678d449a3cb595510aaff99c0163b2eacf6f82a
         initComponents();
         Btn_Buscar.setFocusPainted(false);
         Btn_Buscar.setBorderPainted(false);
@@ -35,6 +39,16 @@ public class ActEntrenador extends javax.swing.JFrame {
         Btn_Actualizar.setFocusPainted(false);
         Btn_Actualizar.setBorderPainted(false);
         Btn_Actualizar.setOpaque(true);
+        Txt_Nombre.setText(usuario.getNombre());
+        Txt_ApePaterno.setText(usuario.getAp_paterno());
+        Txt_ApeMaterno.setText(usuario.getAp_materno());
+        Txt_Contrasena.setText(usuario.getContrasena());
+        Txt_Correo.setText(usuario.getCorreo());
+        Txt_Direccion.setText(usuario.getDireccion());
+        Txt_Telefono.setText(usuario.getTelefono());
+        Txt_Usuario.setText(usuario.getUsuario());
+        Txt_PregRecuperacion.setText(usuario.getPregunta_recuperacion());
+        Txt_RespRecuperacion.setText(usuario.getRespuesta_recuperacion());
     }
 
     /**
@@ -57,10 +71,6 @@ public class ActEntrenador extends javax.swing.JFrame {
         Txt_Nombre = new javax.swing.JTextField();
         Txt_ApePaterno = new javax.swing.JTextField();
         Txt_ApeMaterno = new javax.swing.JTextField();
-        Txt_Edad = new javax.swing.JTextField();
-        Txt_Genero = new javax.swing.JTextField();
-        Txt_Escolaridad = new javax.swing.JTextField();
-        Txt_Ocupacion = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         Txt_Correo = new javax.swing.JTextField();
@@ -187,51 +197,6 @@ public class ActEntrenador extends javax.swing.JFrame {
             }
         });
 
-        Txt_Edad.setBackground(new java.awt.Color(250, 250, 250));
-        Txt_Edad.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        Txt_Edad.setForeground(new java.awt.Color(156, 156, 156));
-        Txt_Edad.setText("Ingrese su edad");
-        Txt_Edad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
-        Txt_Edad.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                Txt_EdadMousePressed(evt);
-            }
-        });
-
-        Txt_Genero.setBackground(new java.awt.Color(250, 250, 250));
-        Txt_Genero.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        Txt_Genero.setForeground(new java.awt.Color(156, 156, 156));
-        Txt_Genero.setText("Ingrese su género");
-        Txt_Genero.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
-        Txt_Genero.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                Txt_GeneroMousePressed(evt);
-            }
-        });
-        Txt_Genero.addActionListener(this::Txt_GeneroActionPerformed);
-
-        Txt_Escolaridad.setBackground(new java.awt.Color(250, 250, 250));
-        Txt_Escolaridad.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        Txt_Escolaridad.setForeground(new java.awt.Color(156, 156, 156));
-        Txt_Escolaridad.setText("Ingrese su escolaridad");
-        Txt_Escolaridad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
-        Txt_Escolaridad.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                Txt_EscolaridadMousePressed(evt);
-            }
-        });
-
-        Txt_Ocupacion.setBackground(new java.awt.Color(250, 250, 250));
-        Txt_Ocupacion.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        Txt_Ocupacion.setForeground(new java.awt.Color(156, 156, 156));
-        Txt_Ocupacion.setText("Ingrese su ocupación");
-        Txt_Ocupacion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
-        Txt_Ocupacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                Txt_OcupacionMousePressed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -240,23 +205,15 @@ public class ActEntrenador extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Txt_Ocupacion, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(Txt_Nombre)
-                            .addComponent(Txt_Edad, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Txt_Genero, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(Txt_Escolaridad, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Txt_ApePaterno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Txt_ApeMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(14, 14, 14))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(10, 10, 10))))
+                        .addGap(10, 412, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(Txt_Nombre)
+                            .addComponent(Txt_ApePaterno, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Txt_ApeMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(166, 166, 166))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,20 +223,13 @@ public class ActEntrenador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Txt_ApePaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Txt_ApeMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Txt_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Txt_Genero, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Txt_Ocupacion, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Txt_Escolaridad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Txt_ApePaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 530, 170));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 370, 160));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(156, 156, 156)));
 
@@ -344,10 +294,10 @@ public class ActEntrenador extends javax.swing.JFrame {
                 .addComponent(Txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Txt_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 210, 170));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 210, 160));
 
         jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(156, 156, 156)));
 
@@ -413,7 +363,7 @@ public class ActEntrenador extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Txt_PregRecuperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Txt_RespRecuperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,7 +381,7 @@ public class ActEntrenador extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 350, 130));
+        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 370, 130));
 
         Btn_Actualizar.setBackground(new java.awt.Color(41, 51, 92));
         Btn_Actualizar.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
@@ -496,7 +446,7 @@ public class ActEntrenador extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(Txt_Especialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -508,7 +458,7 @@ public class ActEntrenador extends javax.swing.JFrame {
                 .addContainerGap(70, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 390, 130));
+        jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 340, 130));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -554,26 +504,6 @@ public class ActEntrenador extends javax.swing.JFrame {
     private void Txt_ApeMaternoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_ApeMaternoMousePressed
         Txt_ApeMaterno.setText("");
     }//GEN-LAST:event_Txt_ApeMaternoMousePressed
-
-    private void Txt_EdadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_EdadMousePressed
-        Txt_Edad.setText("");
-    }//GEN-LAST:event_Txt_EdadMousePressed
-
-    private void Txt_GeneroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_GeneroMousePressed
-        Txt_Genero.setText("");
-    }//GEN-LAST:event_Txt_GeneroMousePressed
-
-    private void Txt_GeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_GeneroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Txt_GeneroActionPerformed
-
-    private void Txt_EscolaridadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_EscolaridadMousePressed
-        Txt_Escolaridad.setText("");
-    }//GEN-LAST:event_Txt_EscolaridadMousePressed
-
-    private void Txt_OcupacionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_OcupacionMousePressed
-        Txt_Ocupacion.setText("");
-    }//GEN-LAST:event_Txt_OcupacionMousePressed
 
     private void Txt_CorreoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_CorreoMousePressed
         Txt_Correo.setText("");
@@ -643,12 +573,8 @@ public class ActEntrenador extends javax.swing.JFrame {
     private javax.swing.JTextField Txt_Contrasena;
     private javax.swing.JTextField Txt_Correo;
     private javax.swing.JTextField Txt_Direccion;
-    private javax.swing.JTextField Txt_Edad;
-    private javax.swing.JTextField Txt_Escolaridad;
     private javax.swing.JTextField Txt_Especialidad;
-    private javax.swing.JTextField Txt_Genero;
     private javax.swing.JTextField Txt_Nombre;
-    private javax.swing.JTextField Txt_Ocupacion;
     private javax.swing.JTextField Txt_PregRecuperacion;
     private javax.swing.JTextField Txt_RespRecuperacion;
     private javax.swing.JTextField Txt_Telefono;

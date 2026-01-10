@@ -708,6 +708,7 @@ public class Menu extends javax.swing.JFrame {
         if (seleccion == null)
             return;
 
+<<<<<<< HEAD
         
 
         if ("Entrenador".equals(seleccion)) {
@@ -722,6 +723,20 @@ public class Menu extends javax.swing.JFrame {
                     ActEntrenador v = new ActEntrenador(usuario, Integer.parseInt(idStr));
                     v.setVisible(true);
                 }
+=======
+        if ("Entrenador".equals(seleccion) || "Paciente".equals(seleccion)) {
+            // If user is editing themselves
+            if (usuario.getRol().equalsIgnoreCase(seleccion)) {
+                if ("Paciente".equals(seleccion)) {
+                ActPaciente v = new ActPaciente(usuario);
+                v.setVisible(true);
+            } else {
+                ActEntrenador v = new ActEntrenador(usuario);
+                v.setVisible(true);
+            }
+
+            Dlg_Actualizar.dispose();
+>>>>>>> e678d449a3cb595510aaff99c0163b2eacf6f82a
             }
         } else if ("Programa cognitivo".equals(seleccion)) {
             String idStr = javax.swing.JOptionPane.showInputDialog("Ingrese ID del Programa a actualizar:");
