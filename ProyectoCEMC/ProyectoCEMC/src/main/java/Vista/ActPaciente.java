@@ -23,8 +23,11 @@ public class ActPaciente extends javax.swing.JFrame {
      * Creates new form ActPaciente
      */
 
-    public ActPaciente(Usuario usuario) {
-        this.usuario = usuario;
+    public ActPaciente(Usuario usuario) {//autoedicion
+        this(usuario, -1);        
+    }
+    public ActPaciente(Usuario usuario, int idAeditar) {//edicion de admin
+        this.usuario=usuario;
         initComponents();
         Btn_Actualizar.setFocusPainted(false);
         Btn_Actualizar.setBorderPainted(false);

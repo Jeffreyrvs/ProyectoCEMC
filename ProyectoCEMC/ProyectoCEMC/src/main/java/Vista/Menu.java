@@ -3,8 +3,6 @@ package Vista;
 import Modelo.Usuario;
 import java.awt.Color;
 
-// Cambiar Menu dependiendo tipo de usuario
-
 public class Menu extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
     private Usuario usuario;
@@ -34,6 +32,10 @@ public class Menu extends javax.swing.JFrame {
         initCustomDialogs(); // Inicializa dialogos
         initListeners();
         configurarRoleAccess();
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
     }
 
     private void configurarRoleAccess() {
@@ -708,7 +710,7 @@ public class Menu extends javax.swing.JFrame {
         if (seleccion == null)
             return;
 
-<<<<<<< HEAD
+
         
 
         if ("Entrenador".equals(seleccion)) {
@@ -723,21 +725,8 @@ public class Menu extends javax.swing.JFrame {
                     ActEntrenador v = new ActEntrenador(usuario, Integer.parseInt(idStr));
                     v.setVisible(true);
                 }
-=======
-        if ("Entrenador".equals(seleccion) || "Paciente".equals(seleccion)) {
-            // If user is editing themselves
-            if (usuario.getRol().equalsIgnoreCase(seleccion)) {
-                if ("Paciente".equals(seleccion)) {
-                ActPaciente v = new ActPaciente(usuario);
-                v.setVisible(true);
-            } else {
-                ActEntrenador v = new ActEntrenador(usuario);
-                v.setVisible(true);
-            }
 
-            Dlg_Actualizar.dispose();
->>>>>>> e678d449a3cb595510aaff99c0163b2eacf6f82a
-            }
+            } Dlg_Actualizar.dispose();
         } else if ("Programa cognitivo".equals(seleccion)) {
             String idStr = javax.swing.JOptionPane.showInputDialog("Ingrese ID del Programa a actualizar:");
             if (idStr != null && !idStr.isEmpty()) {
@@ -773,58 +762,41 @@ public class Menu extends javax.swing.JFrame {
                     ActPaciente v = new ActPaciente(usuario, Integer.parseInt(idStr));
                     v.setVisible(true);
                 }
-            }
+            }Dlg_Actualizar.dispose();
         }
     }
 
     private void Btn_Continuar4ActionPerformed(java.awt.event.ActionEvent evt) {
         String seleccion = (String) Cmb_Borrar.getSelectedItem();
-        if (seleccion == null)
-            return;
+        if (seleccion == null) return;
 
-        try {
-            if ("Paciente".equals(seleccion) && "Paciente".equalsIgnoreCase(usuario.getRol())) {
-                // Autoborrado
-                int confirm = javax.swing.JOptionPane.showConfirmDialog(this,
-                        "¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.",
-                        "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
-                if (confirm == javax.swing.JOptionPane.YES_OPTION) {
-                    Modelo.Pacientes p = new Modelo.Pacientes();
-                    p.setUsuario_idusuario(usuario.getIdusuario());
-                    p.Borrar_paciente();
-
-                    usuario.Borrar();
-                    javax.swing.JOptionPane.showMessageDialog(this, "Cuenta eliminada. Adiós.");
-                    System.exit(0);
-                }
-            } else {
-                // Borrado por id
-                String idStr = javax.swing.JOptionPane.showInputDialog("Ingrese ID del " + seleccion + " a borrar:");
-                if (idStr == null || idStr.isEmpty())
-                    return;
-                int id = Integer.parseInt(idStr);
-
-                if ("Usuario".equals(seleccion) || "Entrenador".equals(seleccion) || "Paciente".equals(seleccion)) {
-                    Modelo.Usuario u = new Modelo.Usuario();
-                    u.setIdusuario(id);
-                    u.Borrar();
-                    javax.swing.JOptionPane.showMessageDialog(this, "Usuario eliminado.");
-                } else if ("Programa cognitivo".equals(seleccion)) {
-                    Modelo.Programa p = new Modelo.Programa();
-                    p.setIdprogramas_cognitivos(id);
-                    p.Borrar();
-                    javax.swing.JOptionPane.showMessageDialog(this, "Programa eliminado.");
-                } else if ("Asignación de programa".equals(seleccion)) {
-
-                    javax.swing.JOptionPane.showMessageDialog(this,
-                            "Borrar Asignación requiere selección compleaja. Implementación pendiente.");
-                }
-            }
-        } catch (NumberFormatException e) {
-            javax.swing.JOptionPane.showMessageDialog(this, "ID inválido.");
-        } catch (java.sql.SQLException e) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Error de base de datos: " + e.getMessage());
+        if("Programa cognitivo".equals(seleccion)) {
+            BorrarPrograma borrarPrograma = new BorrarPrograma();
+            borrarPrograma.setMenu(this);
+            borrarPrograma.setVisible(true);
+            this.setVisible(false);
+        }else if ("Usuario".equals(seleccion)) {
+            BorrarUsuario borrarUsuario = new BorrarUsuario();
+            borrarUsuario.setMenu(this);
+            borrarUsuario.setVisible(true);
+            this.setVisible(false);
+        }else if ("Paciente".equals(seleccion)) {
+            BorrarPaciente borrarPaciente = new BorrarPaciente();
+            borrarPaciente.setMenu(this);
+            borrarPaciente.setVisible(true);
+            this.setVisible(false);
+        }else if ("Entrenador".equals(seleccion)) {
+            BorrarEntrenador borrarEntrenador = new BorrarEntrenador();
+            borrarEntrenador.setMenu(this);
+            borrarEntrenador.setVisible(true);
+            this.setVisible(false);
+        }else if ("Asignación de programa".equals(seleccion)) {
+            BorrarAsigna borrarAsigna = new BorrarAsigna();
+            borrarAsigna.setMenu(this);
+            borrarAsigna.setVisible(true);
+            this.setVisible(false);
         }
+        
         Dlg_Borrar_Dialog.dispose();
     }
 
@@ -850,6 +822,7 @@ public class Menu extends javax.swing.JFrame {
             AsignarPrograma v = new AsignarPrograma(usuario);
             v.setVisible(true);
         }
+        
         Dlg_Crear.dispose();
     }
 
@@ -867,8 +840,6 @@ public class Menu extends javax.swing.JFrame {
                 MostrarEntrenadores v = new MostrarEntrenadores(usuario);
                 v.setVisible(true);
             }
-            case "Buscar programa cognitivo" -> // por implementar
-                javax.swing.JOptionPane.showMessageDialog(this, "Funcionalidad 'Buscar programa' no implementada aún.");
             case "Mostrar asignaciones de programa" -> {
                 MostrarAsignaciones v = new MostrarAsignaciones(usuario);
                 v.setVisible(true);
@@ -878,9 +849,44 @@ public class Menu extends javax.swing.JFrame {
                 v.setVisible(true);
 
             }
+            case "Mostrar usuarios" -> {
+                MostrarUsuarios v = new MostrarUsuarios(usuario);
+                v.setVisible(true);
+            }
+            case "Buscar programa cognitivo" -> {
+                BuscarPrograma buscarPrograma = new BuscarPrograma();
+                buscarPrograma.setMenu(this);
+                buscarPrograma.setVisible(true);
+                this.setVisible(false);
+            }
+            case "Buscar usuario" -> {
+                BuscarUsuario buscarUsuario = new BuscarUsuario();
+                buscarUsuario.setMenu(this);
+                buscarUsuario.setVisible(true);
+                this.setVisible(false);
+            }
+            case "Buscar paciente" -> {
+                BuscarPaciente buscarPaciente = new BuscarPaciente();
+                buscarPaciente.setMenu(this);
+                buscarPaciente.setVisible(true);
+                this.setVisible(false);
+            }
+            case "Buscar entrenador" -> {
+                BuscarEntrenador buscarEntrenador = new BuscarEntrenador();
+                buscarEntrenador.setMenu(this);
+                buscarEntrenador.setVisible(true);
+                this.setVisible(false);
+            }
+            case "Buscar asignación de programa" -> {
+                BuscarAsigna buscarAsigna = new BuscarAsigna();
+                buscarAsigna.setMenu(this);
+                buscarAsigna.setVisible(true);
+                this.setVisible(false);
+            }
             default -> {
             }
         }// Anadir otros casos
+        
         Dlg_Consulta.dispose();
     }
 }
