@@ -24,12 +24,10 @@ public class ActPaciente extends javax.swing.JFrame {
      */
 
     public ActPaciente(Usuario usuario) {//autoedicion
-        this(usuario, -1);
-        
+        this(usuario, -1);        
     }
     public ActPaciente(Usuario usuario, int idAeditar) {//edicion de admin
         this.usuario=usuario;
-
         initComponents();
         Btn_Actualizar.setFocusPainted(false);
         Btn_Actualizar.setBorderPainted(false);
