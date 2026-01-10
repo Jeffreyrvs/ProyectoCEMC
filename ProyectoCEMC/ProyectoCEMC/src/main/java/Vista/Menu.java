@@ -746,8 +746,25 @@ public class Menu extends javax.swing.JFrame {
                 }
             }
         } else if ("Asignación de programa".equals(seleccion)) {
-            String idStr = javax.swing.JOptionPane.showInputDialog("Ingrese ID de la Asignación a actualizar:");
-            // Todo: 3 id? nueva vista?
+            String idStr = javax.swing.JOptionPane.showInputDialog("Ingrese ID del paciente asociado a la Asignación a actualizar:");
+            if (idStr != null && !idStr.isEmpty()) {
+                try {
+                    int id = Integer.parseInt(idStr);
+                    Modelo.Programa p = new Modelo.Programa();
+                    p.setIdprogramas_cognitivos(id);
+                    if (p.Buscar()) {
+                        CrearPrograma v = new CrearPrograma(usuario, p);
+                        v.setVisible(true);
+                        Dlg_Actualizar.dispose();
+                    } else {
+                        javax.swing.JOptionPane.showMessageDialog(this, "Programa no encontrado.");
+                    }
+                } catch (NumberFormatException e) {
+                    javax.swing.JOptionPane.showMessageDialog(this, "ID inválido.");
+                } catch (java.sql.SQLException e) {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Error de base de datos: " + e.getMessage());
+                }
+            }
         } else if ("Paciente".equals(seleccion)) {
             // autoedicion
             if (usuario.getRol().equalsIgnoreCase("Paciente")) {
@@ -827,7 +844,7 @@ public class Menu extends javax.swing.JFrame {
 
         if ("Añadir paciente".equals(seleccion)) {
 
-            AnadirPaciente v = new AnadirPaciente();
+            AnadirPaciente v = new AnadirPaciente(usuario);
             v.setVisible(true);
 
         } else if ("Programa cognitivo".equals(seleccion)) {
