@@ -708,22 +708,18 @@ public class Menu extends javax.swing.JFrame {
         if (seleccion == null)
             return;
 
-        
-
         if ("Entrenador".equals(seleccion) || "Paciente".equals(seleccion)) {
             // If user is editing themselves
             if (usuario.getRol().equalsIgnoreCase(seleccion)) {
-                javax.swing.JOptionPane.showMessageDialog(this,
-                        "Funcionalidad 'Editar Perfil' abrirá la vista de usuario pronto.");
-                // Todo: Omar
+                if ("Paciente".equals(seleccion)) {
+                ActPaciente v = new ActPaciente(usuario);
+                v.setVisible(true);
             } else {
-                String idStr = javax.swing.JOptionPane
-                        .showInputDialog("Ingrese ID del " + seleccion + " a actualizar:");
-                if (idStr != null && !idStr.isEmpty()) {
-                    // Todo: Actualizar la vista de omar
-                    javax.swing.JOptionPane.showMessageDialog(this,
-                            "Funcionalidad 'Editar Usuario por ID' no implementada.");
-                }
+                ActEntrenador v = new ActEntrenador(usuario);
+                v.setVisible(true);
+            }
+
+            Dlg_Actualizar.dispose();
             }
         } else if ("Programa cognitivo".equals(seleccion)) {
             String idStr = javax.swing.JOptionPane.showInputDialog("Ingrese ID del Programa a actualizar:");
