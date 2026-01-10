@@ -608,8 +608,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Cmb_Actualizar;
     private javax.swing.JButton Btn_Continuar3;
 
-    private javax.swing.JDialog Dlg_Borrar_Dialog; 
-    private javax.swing.JComboBox<String> Cmb_Borrar; 
+    private javax.swing.JDialog Dlg_Borrar_Dialog;
+    private javax.swing.JComboBox<String> Cmb_Borrar;
     private javax.swing.JButton Btn_Continuar4;
 
     private void initCustomDialogs() {
@@ -702,7 +702,7 @@ public class Menu extends javax.swing.JFrame {
         dialog.pack();
     }
 
-    // botones 
+    // botones
     private void Btn_Continuar3ActionPerformed(java.awt.event.ActionEvent evt) {
         String seleccion = (String) Cmb_Actualizar.getSelectedItem();
         if (seleccion == null)
@@ -791,9 +791,9 @@ public class Menu extends javax.swing.JFrame {
                 if (confirm == javax.swing.JOptionPane.YES_OPTION) {
                     Modelo.Pacientes p = new Modelo.Pacientes();
                     p.setUsuario_idusuario(usuario.getIdusuario());
-                    p.Borrar_paciente(); 
+                    p.Borrar_paciente();
 
-                    usuario.Borrar(); 
+                    usuario.Borrar();
                     javax.swing.JOptionPane.showMessageDialog(this, "Cuenta eliminada. Adiós.");
                     System.exit(0);
                 }
@@ -815,7 +815,7 @@ public class Menu extends javax.swing.JFrame {
                     p.Borrar();
                     javax.swing.JOptionPane.showMessageDialog(this, "Programa eliminado.");
                 } else if ("Asignación de programa".equals(seleccion)) {
-                    
+
                     javax.swing.JOptionPane.showMessageDialog(this,
                             "Borrar Asignación requiere selección compleaja. Implementación pendiente.");
                 }
@@ -838,28 +838,20 @@ public class Menu extends javax.swing.JFrame {
         if (seleccion == null)
             return;
 
-        switch (seleccion) {
-            case "Paciente" ->                 {
-                    CrearPaciente v = new CrearPaciente();
-                    v.setVisible(true);
-                }
-            case "Programa cognitivo" ->                 {
-                    CrearPrograma v = new CrearPrograma(usuario);
-                    v.setVisible(true);
-                }
-            case "Asignar programa" ->                 {
-                    AsignarPrograma v = new AsignarPrograma(usuario);
-                    v.setVisible(true);
-                }
-            case "Entrenador" ->                 {
-                    CrearEntrenador v = new CrearEntrenador();
-                    v.setVisible(true);
-                    Dlg_Crear.dispose();
-                }
-            default -> {
-            }
+        if ("Añadir paciente".equals(seleccion)) {
+
+            AnadirPaciente v = new AnadirPaciente();
+            v.setVisible(true);
+
+        } else if ("Programa cognitivo".equals(seleccion)) {
+            CrearPrograma v = new CrearPrograma(usuario);
+            v.setVisible(true);
+        } else if ("Asignar programa".equals(seleccion)) {
+            AsignarPrograma v = new AsignarPrograma(usuario);
+            v.setVisible(true);
         }
-    }    
+        Dlg_Crear.dispose();
+    }
 
     private void Btn_Continuar2ActionPerformed(java.awt.event.ActionEvent evt) {
         String seleccion = (String) Cmb_Consulta.getSelectedItem();
@@ -867,25 +859,25 @@ public class Menu extends javax.swing.JFrame {
             return;
 
         switch (seleccion) {
-            case "Mostrar pacientes" ->                 {
-                    MostrarPacientes v = new MostrarPacientes(usuario);
-                    v.setVisible(true);
-                }
-            case "Mostrar entrenadores" ->                 {
-                    MostrarEntrenadores v = new MostrarEntrenadores(usuario);
-                    v.setVisible(true);
-                }
+            case "Mostrar pacientes" -> {
+                MostrarPacientes v = new MostrarPacientes(usuario);
+                v.setVisible(true);
+            }
+            case "Mostrar entrenadores" -> {
+                MostrarEntrenadores v = new MostrarEntrenadores(usuario);
+                v.setVisible(true);
+            }
             case "Buscar programa cognitivo" -> // por implementar
                 javax.swing.JOptionPane.showMessageDialog(this, "Funcionalidad 'Buscar programa' no implementada aún.");
-            case "Mostrar asignaciones de programa" ->                 {
-                    MostrarAsignaciones v = new MostrarAsignaciones(usuario);
-                    v.setVisible(true);
-                }
-            case "Mostrar programas cognitivos" ->                 {
-                    MostrarProgramasCognitivos v = new MostrarProgramasCognitivos(usuario);
-                    v.setVisible(true);
-                    
-                }
+            case "Mostrar asignaciones de programa" -> {
+                MostrarAsignaciones v = new MostrarAsignaciones(usuario);
+                v.setVisible(true);
+            }
+            case "Mostrar programas cognitivos" -> {
+                MostrarProgramasCognitivos v = new MostrarProgramasCognitivos(usuario);
+                v.setVisible(true);
+
+            }
             default -> {
             }
         }// Anadir otros casos
