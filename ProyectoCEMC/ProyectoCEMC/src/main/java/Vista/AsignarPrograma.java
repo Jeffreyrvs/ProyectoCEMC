@@ -57,7 +57,7 @@ public class AsignarPrograma extends javax.swing.JFrame {
     private void cargarPacientes() {
         Pacientes modeloPacientes = new Pacientes();
             try {
-                ResultSet rs = modeloPacientes.MostrarPorEntrenador(this.usuario.getIdusuario());
+                ResultSet rs = modeloPacientes.Mostrar_entrenador(this.usuario.getIdusuario());
                 Cmb_Pacientes.removeAllItems();
                 pacienteIds.clear();
 
@@ -78,7 +78,7 @@ public class AsignarPrograma extends javax.swing.JFrame {
     private void cargarProgramas() {
         Programa modeloPrograma = new Programa();
         try {
-            ResultSet rs = modeloPrograma.Mostrar();
+            ResultSet rs = modeloPrograma.Mostrar_admin();
             Cmb_Programas.removeAllItems();
             programaIds.clear();
 
