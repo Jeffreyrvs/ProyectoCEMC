@@ -72,17 +72,23 @@ public class Entrenadores extends Usuario {
         }
     }
 
-    public void Actualizar() throws SQLException {
-        Connection CON = DriverManager.getConnection("jdbc:mysql://localhost:3306/centro_mental", "root", "");
-        PreparedStatement Sen = CON
-                .prepareStatement("UPDATE entrenadores SET especialidad = ? WHERE usuario_idusuario = ?");
+    public boolean ActualizarEntrenador() {
+        try {
+            Connection CON = DriverManager.getConnection("jdbc:mysql://localhost:3306/centro_mental", "root", "");
 
-        Sen.setString(1, especialidad);
-        Sen.setInt(2, idusuario);
-
-        Sen.executeUpdate();
+            PreparedStatement Sen = CON.prepareStatement(
+                "UPDATE entrenadores SET especialidad=? WHERE usuario_idusuario=?");
+            
+            Sen.setString(1, especialidad);
+            Sen.setInt(2, idusuario);
+            Sen.executeUpdate();
+            
+            return true;
+        } catch (SQLException e) {
+           e.printStackTrace();
+        return false;
+        }
     }
-
     public void Borrar() throws SQLException {
         Connection CON = DriverManager.getConnection("jdbc:mysql://localhost:3306/centro_mental", "root", "");
         PreparedStatement Sen = CON.prepareStatement("DELETE FROM entrenadores WHERE usuario_idusuario = ?");
