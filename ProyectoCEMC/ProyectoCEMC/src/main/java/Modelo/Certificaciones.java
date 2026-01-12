@@ -50,10 +50,9 @@ public class Certificaciones {
     
     public void Guardar() throws SQLException{
         Connection CON = DriverManager.getConnection("jdbc:mysql://localhost:3306/centro_mental","root","");
-        PreparedStatement Sen = CON.prepareStatement("INSERT INTO certificaciones VALUES (?, ?, ?)");
-        Sen.setInt(1, idcertificaciones);
-        Sen.setString(2, certificaciones);
-        Sen.setInt(3, entrenadores_usuario_idusuario);
+        PreparedStatement Sen = CON.prepareStatement("INSERT INTO certificaciones (certificaciones, entrenadores_usuario_idusuario) VALUES (?, ?)");
+        Sen.setString(1, certificaciones);
+        Sen.setInt(2, entrenadores_usuario_idusuario);
         Sen.executeUpdate();
     }
     
@@ -103,4 +102,5 @@ public class Certificaciones {
         ResultSet Res = SQL.executeQuery();
         return Res;
     }
+
 }
